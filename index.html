@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1,
+      maximum-scale=1,
+      user-scalable=no,
+      viewport-fit=cover">
+
+<meta name="theme-color" content="#070b12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="WAN GUARD">
+
+<title>WAN GUARD</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#070b12;
+    color:#fff;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+body{
+    min-height:100dvh;
+}
+
+/* APP */
+
+.app{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            #18325a 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            #171b46 0%,
+            transparent 30%
+        ),
+        #070b12;
+}
+
+/* HEADER */
+
+.header{
+    height:72px;
+    padding:
+        env(safe-area-inset-top)
+        18px
+        0
+        18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:#080d16dd;
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid #ffffff0c;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size:20px;
+
+    box-shadow:
+        0 8px 25px #2563eb44;
+}
+
+.brand-title{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.2px;
+}
+
+.brand-sub{
+    color:#8290a4;
+    font-size:11px;
+    margin-top:2px;
+}
+
+.menu{
+    width:43px;
+    height:43px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #263346;
+    border-radius:14px;
+
+    background:#111925;
+    color:#fff;
+
+    font-size:21px;
+}
+
+/* CONTENT */
+
+.content{
+    position:absolute;
+
+    top:72px;
+    bottom:76px;
+    left:0;
+    right:0;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:
+        18px
+        16px
+        calc(25px + env(safe-area-inset-bottom));
+
+    scrollbar-width:none;
+}
+
+.content::-webkit-scrollbar{
+    display:none;
+}
+
+/* PROFILE */
+
+.profile{
+    padding:18px;
+
+    border-radius:22px;
+
+    border:1px solid #263346;
+
+    background:
+        linear-gradient(
+            145deg,
+            #121b2a,
+            #0d141f
+        );
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:16px;
+
+    box-shadow:
+        0 15px 40px #0004;
+}
+
+.avatar{
+    width:57px;
+    height:57px;
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #8b5cf6
+        );
+
+    font-size:25px;
+    font-weight:800;
+}
+
+.profile-info{
+    flex:1;
+    min-width:0;
+}
+
+.profile-name{
+    font-size:16px;
+    font-weight:800;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.profile-status{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:#8795a8;
+    font-size:12px;
+
+    margin-top:4px;
+}
+
+.online{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 10px #22c55e;
+}
+
+/* WELCOME */
+
+.hero{
+    margin-bottom:17px;
+}
+
+.hero h1{
+    font-size:27px;
+    line-height:1.15;
+    font-weight:900;
+}
+
+.hero p{
+    color:#8b98aa;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.card{
+    min-height:125px;
+
+    padding:16px;
+
+    border-radius:19px;
+
+    border:1px solid #253143;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111a27,
+            #0d141e
+        );
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+        transform .15s ease,
+        border-color .15s ease;
+}
+
+.card:active{
+    transform:scale(.97);
+}
+
+.card-icon{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:#182437;
+
+    font-size:19px;
+
+    margin-bottom:13px;
+}
+
+.card h3{
+    font-size:14px;
+}
+
+.card p{
+    font-size:11px;
+    color:#7e8da1;
+    margin-top:4px;
+}
+
+.card-arrow{
+    position:absolute;
+    right:14px;
+    top:16px;
+
+    color:#617087;
+}
+
+/* BIG CARD */
+
+.big-card{
+    grid-column:1/-1;
+
+    min-height:110px;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+}
+
+.big-card .card-icon{
+    margin:0;
+    flex:none;
+}
+
+.big-info{
+    flex:1;
+}
+
+.big-info h3{
+    font-size:15px;
+}
+
+.big-info p{
+    font-size:11px;
+    color:#8290a2;
+    margin-top:5px;
+}
+
+/* STATUS */
+
+.server{
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    border:1px solid #253143;
+
+    background:#0f1723;
+}
+
+.server-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:12px;
+}
+
+.server-title{
+    font-size:13px;
+    font-weight:700;
+}
+
+.server-status{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:#22c55e;
+    font-size:11px;
+}
+
+.server-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+}
+
+.server-url{
+    padding:10px;
+
+    border-radius:11px;
+
+    background:#080e17;
+
+    color:#718096;
+
+    font-size:10px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* BUTTON */
+
+.open-button{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+    border:0;
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color:white;
+
+    font-size:13px;
+    font-weight:800;
+
+    box-shadow:
+        0 10px 25px #2563eb33;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:
+        calc(
+            76px +
+            env(safe-area-inset-bottom)
+        );
+
+    padding:
+        8px
+        10px
+        env(safe-area-inset-bottom);
+
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    background:#080d15ee;
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border-top:1px solid #ffffff0c;
+}
+
+.nav-item{
+    border:0;
+    background:transparent;
+
+    color:#68778d;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:4px;
+
+    border-radius:15px;
+
+    font-size:10px;
+}
+
+.nav-icon{
+    font-size:20px;
+}
+
+.nav-item.active{
+    color:#fff;
+    background:#142238;
+}
+
+/* SIDE MENU */
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    background:#0008;
+
+    z-index:20;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.25s;
+}
+
+.overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.drawer{
+    position:fixed;
+
+    z-index:30;
+
+    top:0;
+    right:-320px;
+
+    width:300px;
+    height:100dvh;
+
+    padding:
+        calc(22px + env(safe-area-inset-top))
+        18px
+        20px;
+
+    background:#0b111b;
+
+    border-left:1px solid #273447;
+
+    transition:.25s;
+
+    box-shadow:-20px 0 50px #0008;
+}
+
+.drawer.show{
+    right:0;
+}
+
+.drawer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:25px;
+}
+
+.drawer-head h2{
+    font-size:18px;
+}
+
+.close{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:13px;
+
+    background:#172131;
+
+    color:white;
+
+    font-size:21px;
+}
+
+.drawer-card{
+    padding:15px;
+
+    border-radius:16px;
+
+    background:#111a27;
+
+    border:1px solid #263346;
+
+    margin-bottom:12px;
+}
+
+.drawer-card strong{
+    display:block;
+    font-size:13px;
+}
+
+.drawer-card span{
+    display:block;
+    color:#7e8ca0;
+    font-size:11px;
+    margin-top:5px;
+}
+
+/* FULL SCREEN */
+
+.fullscreen{
+    position:fixed;
+
+    right:15px;
+    top:90px;
+
+    width:40px;
+    height:40px;
+
+    z-index:10;
+
+    border:1px solid #263346;
+    border-radius:12px;
+
+    background:#111925cc;
+    color:#fff;
+
+    backdrop-filter:blur(10px);
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+    bottom:95px;
+
+    transform:
+        translate(-50%,20px);
+
+    z-index:100;
+
+    padding:11px 16px;
+
+    border-radius:13px;
+
+    background:#182334;
+    border:1px solid #34445a;
+
+    color:white;
+
+    font-size:12px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.25s;
+
+    white-space:nowrap;
+}
+
+.toast.show{
+    opacity:1;
+    transform:
+        translate(-50%,0);
+}
+
+/* SMALL DEVICES */
+
+@media(max-height:650px){
+
+    .profile{
+        padding:13px;
+    }
+
+    .hero h1{
+        font-size:23px;
+    }
+
+    .card{
+        min-height:110px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="logo">
+                🛡️
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    WAN GUARD
+                </div>
+
+                <div class="brand-sub">
+                    WhatsApp Control
+                </div>
+            </div>
+
+        </div>
+
+        <button
+            class="menu"
+            onclick="openMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+        <!-- PROFILE -->
+
+        <section class="profile">
+
+            <div class="avatar">
+                W
+            </div>
+
+            <div class="profile-info">
+
+                <div class="profile-name">
+                    WAN KEDDET
+                </div>
+
+                <div class="profile-status">
+
+                    <span class="online"></span>
+
+                    Bot Server Online
+
+                </div>
+
+            </div>
+
+            <div>
+                ›
+            </div>
+
+        </section>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1>
+                Selamat datang 👋
+            </h1>
+
+            <p>
+                Kelola bot WhatsApp kamu
+                dengan mudah.
+            </p>
+
+        </section>
+
+        <!-- FEATURES -->
+
+        <section class="grid">
+
+            <div
+                class="card"
+                onclick="openBackend()"
+            >
+
+                <div class="card-icon">
+                    🤖
+                </div>
+
+                <span class="card-arrow">
+                    ›
+                </span>
+
+                <h3>
+                    Bot Control
+                </h3>
+
+                <p>
+                    Kelola koneksi WhatsApp
+                </p>
+
+            </div>
+
+            <div
+                class="card"
+                onclick="openBackend()"
+            >
+
+                <div class="card-icon">
+                    👥
+                </div>
+
+                <span class="card-arrow">
+                    ›
+                </span>
+
+                <h3>
+                    Grup
+                </h3>
+
+                <p>
+                    Kelola grup WhatsApp
+                </p>
+
+            </div>
+
+            <div
+                class="card"
+                onclick="openBackend()"
+            >
+
+                <div class="card-icon">
+                    💤
+                </div>
+
+                <span class="card-arrow">
+                    ›
+                </span>
+
+                <h3>
+                    AFK
+                </h3>
+
+                <p>
+                    Balasan AFK otomatis
+                </p>
+
+            </div>
+
+            <div
+                class="card"
+                onclick="openBackend()"
+            >
+
+                <div class="card-icon">
+                    👋
+                </div>
+
+                <span class="card-arrow">
+                    ›
+                </span>
+
+                <h3>
+                    Welcome
+                </h3>
+
+                <p>
+                    Pesan welcome custom
+                </p>
+
+            </div>
+
+            <div
+                class="card big-card"
+                onclick="openBackend()"
+            >
+
+                <div class="card-icon">
+                    ⚙️
+                </div>
+
+                <div class="big-info">
+
+                    <h3>
+                        Control Panel
+                    </h3>
+
+                    <p>
+                        Buka seluruh fitur bot
+                        dari panel utama.
+                    </p>
+
+                </div>
+
+                <span>
+                    ›
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- SERVER -->
+
+        <section class="server">
+
+            <div class="server-top">
+
+                <div class="server-title">
+                    Server Bot
+                </div>
+
+                <div
+                    id="serverStatus"
+                    class="server-status"
+                >
+
+                    <span class="server-dot"></span>
+
+                    ONLINE
+
+                </div>
+
+            </div>
+
+            <div class="server-url">
+                http://167.71.200.167:2030
+            </div>
+
+            <button
+                class="open-button"
+                onclick="openBackend()"
+            >
+                BUKA CONTROL PANEL
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+
+    <nav class="bottom">
+
+        <button
+            class="nav-item active"
+            onclick="home()"
+        >
+
+            <span class="nav-icon">
+                🏠
+            </span>
+
+            Home
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openBackend()"
+        >
+
+            <span class="nav-icon">
+                🤖
+            </span>
+
+            Bot
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openBackend()"
+        >
+
+            <span class="nav-icon">
+                👥
+            </span>
+
+            Grup
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openMenu()"
+        >
+
+            <span class="nav-icon">
+                👤
+            </span>
+
+            Profil
+
+        </button>
+
+    </nav>
+
+</div>
+
+<!-- DRAWER -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="closeMenu()"
+></div>
+
+<aside
+    id="drawer"
+    class="drawer"
+>
+
+    <div class="drawer-head">
+
+        <h2>
+            Profil
+        </h2>
+
+        <button
+            class="close"
+            onclick="closeMenu()"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div class="drawer-card">
+
+        <strong>
+            👤 WAN KEDDET
+        </strong>
+
+        <span>
+            Administrator
+        </span>
+
+    </div>
+
+    <div class="drawer-card">
+
+        <strong>
+            🤖 WhatsApp Bot
+        </strong>
+
+        <span>
+            Terhubung ke server Pterodactyl
+        </span>
+
+    </div>
+
+    <div class="drawer-card">
+
+        <strong>
+            🌐 Server
+        </strong>
+
+        <span>
+            167.71.200.167:2030
+        </span>
+
+    </div>
+
+    <button
+        class="open-button"
+        onclick="openBackend()"
+    >
+        BUKA PANEL BOT
+    </button>
+
+</aside>
+
+<div
+    id="toast"
+    class="toast"
+>
+    Membuka panel...
+</div>
+
+<script>
+
+/* BACKEND */
+
+const BACKEND =
+    "http://167.71.200.167:2030";
+
+/* OPEN BACKEND */
+
+function openBackend(){
+
+    showToast(
+        "Membuka control panel..."
+    );
+
+    setTimeout(() => {
+
+        window.location.href =
+            BACKEND;
+
+    },300);
+
+}
+
+/* MENU */
+
+function openMenu(){
+
+    document
+        .getElementById("drawer")
+        .classList.add("show");
+
+    document
+        .getElementById("overlay")
+        .classList.add("show");
+
+}
+
+function closeMenu(){
+
+    document
+        .getElementById("drawer")
+        .classList.remove("show");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("show");
+
+}
+
+/* HOME */
+
+function home(){
+
+    const content =
+        document.querySelector(".content");
+
+    content.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+/* TOAST */
+
+function showToast(text){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+    toast.textContent = text;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove(
+            "show"
+        );
+
+    },1800);
+
+}
+
+/* SERVER CHECK */
+
+async function checkServer(){
+
+    try{
+
+        const response =
+            await fetch(
+                BACKEND + "/health",
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        if(!response.ok){
+            throw new Error();
+        }
+
+        document
+            .getElementById(
+                "serverStatus"
+            )
+            .innerHTML =
+            '<span class="server-dot"></span> ONLINE';
+
+    }catch(e){
+
+        document
+            .getElementById(
+                "serverStatus"
+            )
+            .style.color =
+            "#ef4444";
+
+        document
+            .getElementById(
+                "serverStatus"
+            )
+            .innerHTML =
+            '<span class="server-dot" style="background:#ef4444"></span> OFFLINE';
+
+    }
+
+}
+
+/* INITIAL */
+
+checkServer();
+
+setInterval(
+    checkServer,
+    10000
+);
+
+/* ANDROID BACK / ESC */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+            closeMenu();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
